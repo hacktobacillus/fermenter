@@ -23,5 +23,5 @@ def crunch(request):
     classifier = LRBeerClassifier()
     classifier.train(like_ids, dislike_ids)
     other_beers = [b for b in get_beers() if b['id'] not in like_ids + dislike_ids]
-    results = [(beer['id'], classifier.classify(beer['id'])) for beer in other_beers]
+    results = [(beer, classifier.classify(beer['id'])) for beer in other_beers]
     return JsonResponse({"result": sorted(results, key=lambda x: x[1], reverse=True)})

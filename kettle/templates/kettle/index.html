@@ -45,7 +45,56 @@
 <div id="images"></div>
  
 
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width: 55%;">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Your Custom Results</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12" style="text-align:center;">
+            <h3>Some beers you'll love!</h3>
+          </div>
+        </div>
+        <div class="row" style="background-color:#8F8"> 
+          <div class="col-md-4">
+            <beer-card beer="results[0][0]"></beer-card>
+          </div>
+          <div class="col-md-4">
+            <beer-card beer="results[1][0]"></beer-card>
+          </div>
+          <div class="col-md-4">
+            <beer-card beer="results[2][0]"></beer-card>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" style="text-align:center;">
+            <h3>Some beers you may not be as happy with...</h3>
+          </div>
+        </div>
+        <div class="row" style="background-color:#F88"> 
+          <div class="col-md-4">
+            <beer-card beer="results[results.length-1][0]"></beer-card>
+          </div>
+          <div class="col-md-4">
+            <beer-card beer="results[results.length-2][0]"></beer-card>
+          </div>
+          <div class="col-md-4">
+            <beer-card beer="results[results.length-3][0]"></beer-card>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 
@@ -112,6 +161,7 @@
           </div> <!-- flexbox -->        
             <div class="row">
              <div class="col-md-10" style="text-align:center;padding: 25px;">
+               <h3>Pick a couple beers you like and a couple you don't.</h3>
                <button class="btn btn-primary" ng-click="postBeers()">BEER ME!!!!11one</button>
              </div>
             </div>

@@ -49,6 +49,11 @@ angular.module("kettleApp")
         beer.voted_on = true;
 }
 
+    function reset() {
+        $scope.dislike_beers = [];
+        $scope.like_beers = [];
+    }
+
     function upVoteBeer(beer) {
         voteBeer(beer,$scope.like_beers,$scope.dislike_beers);
         console.log([$scope.like_beers,$scope.dislike_beers]);
@@ -63,8 +68,9 @@ angular.module("kettleApp")
     function postBeers() {
         $http.post('/kettle/crunch',{like_ids:$scope.like_beers,dislike_ids:$scope.dislike_beers}).then(
         function (data) { 
-            console.log(data);
-            alert('<img src="http://http://media.giphy.com/media/rnR8L2AtvBpD2/giphy-tumblr.gif"></img>');
+            $scope.results = data.data.result;
+            console.log($scope.results);
+            $('#myModal').modal('show');
         },
         function () { 
             alert('failed');

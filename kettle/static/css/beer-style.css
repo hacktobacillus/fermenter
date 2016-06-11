@@ -299,16 +299,16 @@ footer {
 .beercard {
 
   width:230px;
-  height:175px;
+  height:200px;
   -webkit-border-radius: 55px;
   -moz-border-radius: 55px;
   border-radius: 55px;
-  border:1px solid #000000;
+  border:1px solid #333;
   background-color:#CCE1E3;
-  position: relative;
+  position: fixed;
   opacity: 0.8;
   box-shadow: 5px 5px 5px #888888;
-  margin: 5px;
+  margin: 15px;
 }
 
 .beercard .btn-success { 

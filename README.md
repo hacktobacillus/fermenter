@@ -2,7 +2,7 @@ Development Setup
 =================
 install the following on your system:
 ```
-apt-get install python3-dev python3-pip
+apt-get install python3-dev python3-pip libcurl4-openssl-dev libssl-dev libpq-dev
 ```
 
 clone with ssh (to be able to edit) and setup venv:

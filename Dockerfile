@@ -9,8 +9,8 @@ RUN apt-get install -y libpq-dev
 RUN pip3 install virtualenv
 RUN virtualenv -p python3 /venv
 
-ADD . /hacktobacillus
-WORKDIR /hacktobacillus
+ADD . /fermenter
+WORKDIR /fermenter
 RUN /venv/bin/pip install -r ./requirements.txt
 
 ENTRYPOINT ["./launch.sh"]

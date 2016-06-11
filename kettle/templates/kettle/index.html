@@ -35,11 +35,17 @@
     </script>
 </head>
 <body ng-app="kettleApp" ng-controller="kettleCtrl">
-
+<!--
 {% for beer in beers %}
-<beer-card beer="{{beer}}"></beer-card>
+<beer-card beer="{{beer}}" upVote="upVoteBeer({{beer}})" downVote="downVoteBeer({{beer}})"></beer-card>
 {% endfor %}
- 
+-->
+
+<div ng-repeat="beer in model.beer_list">
+  <beer-card beer="beer" upVote="upVoteBeer(beer)" downVote="downVoteBeer(beer)"></beer-card>
+</div>
+
+
 <div id="images"></div>
  
 

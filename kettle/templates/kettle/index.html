@@ -63,13 +63,13 @@
         </div>
         <div class="row" style="background-color:#8F8"> 
           <div class="col-md-4">
-            <beer-card beer="results[0][0]"></beer-card>
+            <beer-card beer="results[0][0]" hidebtn="true"></beer-card>
           </div>
           <div class="col-md-4">
-            <beer-card beer="results[1][0]"></beer-card>
+            <beer-card beer="results[1][0]" hidebtn="true"></beer-card>
           </div>
           <div class="col-md-4">
-            <beer-card beer="results[2][0]"></beer-card>
+            <beer-card beer="results[2][0]" hidebtn="true"></beer-card>
           </div>
         </div>
         <div class="row">
@@ -79,13 +79,13 @@
         </div>
         <div class="row" style="background-color:#F88"> 
           <div class="col-md-4">
-            <beer-card beer="results[results.length-1][0]"></beer-card>
+            <beer-card beer="results[results.length-1][0]" hidebtn="true"></beer-card>
           </div>
           <div class="col-md-4">
-            <beer-card beer="results[results.length-2][0]"></beer-card>
+            <beer-card beer="results[results.length-2][0]" hidebtn="true"></beer-card>
           </div>
           <div class="col-md-4">
-            <beer-card beer="results[results.length-3][0]"></beer-card>
+            <beer-card beer="results[results.length-3][0]" hidebtn="true"></beer-card>
           </div>
         </div>
       </div>
@@ -129,7 +129,7 @@
              </div> <!-- col-md-8 -->
              <div class="form-group">
                <label style="color:#fff;">Search:</label>
-               <input style="width:30%" ng-model="searchText" class="form-control">
+               <input style="width:300px;display:inline;" ng-model="searchText" class="form-control">
              </div>
             </div> <!-- row --> 
           </div> <!-- flexbox -->        
@@ -144,16 +144,16 @@
              <div class="col-md-12">
                <div class="row" ng-repeat="beer in list=(model.beer_list | filter:searchText)" ng-if="($index%4)==0">
                  <div class="col-md-3">
-                  <beer-card beer="list[$index]" up-vote="upVoteBeer(list[$index])" down-vote="downVoteBeer(model.beer_list[$index])"></beer-card> 
+                  <beer-card beer="list[$index]" up-vote="upVoteBeer(list[$index])" down-vote="downVoteBeer(list[$index])" ng-hide="!list[$index].name"></beer-card> 
                  </div>
                  <div class="col-md-3">
-                  <beer-card beer="list[$index+1]" up-vote="upVoteBeer(list[$index+1])" down-vote="downVoteBeer(list[$index+1])"></beer-card> 
+                  <beer-card beer="list[$index+1]" up-vote="upVoteBeer(list[$index+1])" down-vote="downVoteBeer(list[$index+1])" ng-hide="!list[$index+1].name"></beer-card> 
                  </div>
                  <div class="col-md-3">
-                  <beer-card beer="list[$index+2]" up-vote="upVoteBeer(list[$index+2])" down-vote="downVoteBeer(list[$index+2])"></beer-card> 
+                  <beer-card beer="list[$index+2]" up-vote="upVoteBeer(list[$index+2])" down-vote="downVoteBeer(list[$index+2])" ng-hide="!list[$index+2].name"></beer-card> 
                  </div>
                  <div class="col-md-3">
-                  <beer-card beer="list[$index+3]" up-vote="upVoteBeer(list[$index+3])" down-vote="downVoteBeer(list[$index+3])"></beer-card> 
+                  <beer-card beer="list[$index+3]" up-vote="upVoteBeer(list[$index+3])" down-vote="downVoteBeer(list[$index+3])" ng-hide="!list[$index+3].name"></beer-card> 
                  </div>
                </div>
              </div> <!-- col-md10 -->

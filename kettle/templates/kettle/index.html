@@ -167,18 +167,18 @@
             </div>
             <div class="row">
              <div class="col-md-12">
-               <div class="row" ng-repeat="beer in model.beer_list | filter:searchText" ng-if="($index%4)==0">
+               <div class="row" ng-repeat="beer in list=(model.beer_list | filter:searchText)" ng-if="($index%4)==0">
                  <div class="col-md-3">
-                  <beer-card beer="model.beer_list[$index]" up-vote="upVoteBeer(model.beer_list[$index])" down-vote="downVoteBeer(model.beer_list[$index])"></beer-card> 
+                  <beer-card beer="list[$index]" up-vote="upVoteBeer(list[$index])" down-vote="downVoteBeer(model.beer_list[$index])"></beer-card> 
                  </div>
                  <div class="col-md-3">
-                  <beer-card beer="model.beer_list[$index+1]" up-vote="upVoteBeer(model.beer_list[$index+1])" down-vote="downVoteBeer(model.beer_list[$index+1])"></beer-card> 
+                  <beer-card beer="list[$index+1]" up-vote="upVoteBeer(list[$index+1])" down-vote="downVoteBeer(list[$index+1])"></beer-card> 
                  </div>
                  <div class="col-md-3">
-                  <beer-card beer="model.beer_list[$index+2]" up-vote="upVoteBeer(model.beer_list[$index+2])" down-vote="downVoteBeer(model.beer_list[$index+2])"></beer-card> 
+                  <beer-card beer="list[$index+2]" up-vote="upVoteBeer(list[$index+2])" down-vote="downVoteBeer(list[$index+2])"></beer-card> 
                  </div>
                  <div class="col-md-3">
-                  <beer-card beer="model.beer_list[$index+3]" up-vote="upVoteBeer(model.beer_list[$index+3])" down-vote="downVoteBeer(model.beer_list[$index+3])"></beer-card> 
+                  <beer-card beer="list[$index+3]" up-vote="upVoteBeer(list[$index+3])" down-vote="downVoteBeer(list[$index+3])"></beer-card> 
                  </div>
                </div>
              </div> <!-- col-md10 -->

@@ -21,7 +21,7 @@
       <script src="{% static "js/vendor/jquery-1.11.1.min.js" %}"></script>
     <script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
     <script src="{% static "js/vendor/wow-animate.js" %}"></script>
-    <script src="{% static "js/angular.min.js" %}"></script>
+    <script src="{% static "js/angular.js" %}"></script>
     <script src="{% static "js/main.js" %}"></script>
     <script src="{% static "js/kettleApp.js" %}"></script>
     <script src="{% static "js/kettleCtrl.js" %}"></script>
@@ -94,9 +94,9 @@
                   <h4>Need a beer? Let Avery help</h4>
                   <button ng-click="postBeers()">click</button>
                   <h2><span class="yellow">Beer</span> Options</h2>
-                  <div ng-repeat="item in model.beer_list">
+                  <!--div ng-repeat="item in model.beer_list">
                     <beer-card beer="item"></beer-card>
-                  </div>
+                  </div-->
                   <p>Start by rating a couple of beers you like: <span class="black"><select ng-options="item.id as item.name for item in model.beer_list" ng-model="like_beers" id='likeSelect' size="5">
                   </select>
                   <p>and any beers you don't like: <span class="black"><select multiple id='dislikeSelect' size="20">

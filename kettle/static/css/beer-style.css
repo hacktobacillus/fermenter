@@ -108,6 +108,21 @@ body {
 
 }
 
+.backtotop {
+  background: none;
+  margin: 0;
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  width: 115px;
+  height: 50px;
+  z-index: 100;
+  display: none;
+  text-decoration: none;
+  color: #fff;
+  background-color: crimson; 
+}
+
 
 
 .bg__first {

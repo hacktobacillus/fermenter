@@ -32,6 +32,32 @@
           animateClass: 'animated',
           offset:       100
         }).init();
+
+        jQuery(document).ready(function() {
+ 
+          var offset = 250; 
+          var duration = 300;
+ 
+          jQuery(window).scroll(function() {
+ 
+          if (jQuery(this).scrollTop() > offset) {
+            jQuery('.backtotop').fadeIn(duration);
+          } else {
+            jQuery('.backtotop').fadeOut(duration);
+          }
+        });
+ 
+jQuery('.backtotop').click(function(event) {
+ 
+  event.preventDefault(); 
+  jQuery('html, body').animate({scrollTop: 0}, duration);
+  return false;
+ 
+})
+ 
+});
+
+
     </script>
 </head>
 
@@ -197,6 +223,8 @@
       </footer>-->
 
     </div>   
+
+    <button type="button" class="btn backtotop" >Back To Top</button>
 
  
 </body>

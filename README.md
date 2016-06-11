@@ -19,7 +19,7 @@ setup the virtualenv
 ```
 virtualenv -p python3 venv
 source venv/bin/activate
-pip install -r --upgrade ./requirements.txt
+pip install --upgrade -r ./requirements.txt
 ```
 
 

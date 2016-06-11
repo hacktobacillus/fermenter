@@ -1,5 +1,6 @@
 import simplejson as json, os
 from sklearn.decomposition import PCA
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from kettle.utils import get_beers
 import numpy as np
 
@@ -49,7 +50,6 @@ class BeerMLData(list):
     def project(self):
         return self.proj.transform(self.arr)
 
-        
 
     def create_beer_mapping(self): 
         data = {}
@@ -61,7 +61,11 @@ class BeerMLData(list):
         self.fscales = {}
 
         # Figure out feature space dimensionality
+
+        self.descriptions = []
+
         for beer in self:
+
             for key,dtype in self.important_keys:
                 fsk = self.feature_space_keys[key]
                 dat = dtype(beer[key])
@@ -70,6 +74,17 @@ class BeerMLData(list):
                 if dtype != list:
                     dat = set([dat])
                 self.feature_space_keys[key] = fsk.union(dat)
+            
+        self.descriptions = [beer['description'] for beer in self]
+
+        self.count_vect = CountVectorizer(stop_words='english')
+        X_train_counts = self.count_vect.fit_transform(self.descriptions)
+        
+        self.tfidf_transformer = TfidfTransformer()
+        self.X_train_tfidf = self.tfidf_transformer.fit_transform(X_train_counts)
+        #print(self.X_train_tfidf[0])
+        #print(dir(self.X_train_tfidf[0]))
+
 
         self.fs_dim = 0
         for k,v in self.feature_space_keys.items():
@@ -80,6 +95,8 @@ class BeerMLData(list):
             v.sort()
             self.feature_space_keys[k] = v
             self.fs_dim += len(v)
+        self.fs_dim += self.X_train_tfidf.shape[1] # For the text description.
+    
 
         #compute floating point scales for continuous data
         for k,dtype in self.important_keys:
@@ -129,6 +146,16 @@ class BeerMLData(list):
             else:   
                 record[idx] = min(dtype(beer_vals) / self.fscales[key],1.0)
                 idx += 1    
+
+        cv = self.count_vect.transform([beer['description']])
+        cv = self.tfidf_transformer.transform(cv).todense()
+        #print( cv)
+        
+        
+
+
+        record[idx:] = cv
+
         return record
 
 
@@ -142,6 +169,8 @@ if __name__ == "__main__":
 
     X = data.get_mapping_asarray()
     Y = data.project()
+    print (data.feature_space_keys['descriptors'])
+    print (data.feature_space_keys['categories'])
 
 
     import matplotlib

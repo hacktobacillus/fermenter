@@ -1,5 +1,5 @@
 from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
 from kettle.scripts.formatData import BeerMLData
 import numpy as np
@@ -33,7 +33,7 @@ class NBBeerClassifier(Classifier):
 
     def __init__(self):
         Classifier.__init__(self)
-        self.classifier = GaussianNB()
+        self.classifier = MultinomialNB()
 
 class SVCBeerClassifier(Classifier):
 
@@ -55,13 +55,13 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from matplotlib.cm import jet
 
-    beers_i_like = ['samael-s','rumpkin','the-beast','out-of-bounds-stout']
-    beers_i_dont = ['joe-s-pils','raja','ipa']
+    beers_i_like = ['samael-s','rumpkin','the-beast','out-of-bounds-stout','baltic-porter']
+    beers_i_dont = ['joe-s-pils','raja','ipa','summer-s-day-ipa','dry-hopped-ipa','dugana']
 
     
 
-    classifier = LRBeerClassifier()
-    #classifier = NBBeerClassifier()
+    classifier = LRBeerClassifier(100.)
+    classifier = NBBeerClassifier()
     #classifier = SVCBeerClassifier()
     classifier.train(beers_i_like,beers_i_dont)
 

@@ -13,7 +13,7 @@ def index(request):
 
 def beer_list(request):
     beers = get_beers()
-    return render(request, 'kettle/beer_list.html', {'beers': beers})
+    return JsonResponse({"result": beers})
 
 def crunch(request):
     print(request.body)

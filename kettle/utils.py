@@ -1,7 +1,7 @@
 import requests
-import redis
 import simplejson as json
-from brewmaster.settings import AVERY_API_ROOT, REDIS_HOST
+from brewmaster.settings import AVERY_API_ROOT
+from kettle.models import Cache
 
 
 def avery(url):
@@ -12,12 +12,11 @@ def avery(url):
 
 
 def get_beers(refresh_cache=False):
-    r = redis.StrictRedis(host=REDIS_HOST, port=6379, db=0)
     if refresh_cache:
         beers = avery('beers')['beers']
         result = []
         for beer in beers:
             print(beer['name'])
             result.append(avery(beer['url'])['beer'])
-        r.set('beers', json.dumps(result))
-    return json.loads(r.get('beers'))
+        Cache(key='beer_list', value=json.dumps(result)).save()
+    return json.loads(Cache.objects.get(key='beer_list').value)

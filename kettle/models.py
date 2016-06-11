@@ -6,3 +6,7 @@ class Drinker(models.Model):
     # It's a hackathon, screw passwords, this isn't prod
     likes = models.TextField()
     dislikes = models.TextField()
+
+class Cache(models.Model):
+    key = models.TextField()
+    value = models.TextField()

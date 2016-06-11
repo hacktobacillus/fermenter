@@ -42,10 +42,13 @@
 {% endfor %}
 -->
 
-
 <div id="images"></div>
- 
-
+ <!--
+<div id="alert-dude" class="alert alert-success" data-toggle="alert">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>
+-->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog" style="width: 55%;">
 
@@ -121,7 +124,7 @@
               <div class="col-md-8 col-sm-8 col-xs-12">              
                 <div class="right-caption wow animated fadeInRight">
                   <h4>Need a beer? Let Avery help</h4>
-                  <h2><span class="yellow">Beer</span> Options</h2>
+                  <h2><span class="yellow" style="color:crimson;">Beer</span> Options</h2>
                   <!--div ng-repeat="item in model.beer_list">
                     <beer-card beer="item"></beer-card>
                   </div-->
@@ -137,7 +140,7 @@
             <div class="row" style="text-align:center;">
              <div class="col-md-12" style="text-align:center;padding: 25px;color:#fff;">
                <h3>Pick a couple beers you like and a couple you don't.</h3>
-               <button class="btn btn-primary btn-lg" ng-click="postBeers()">BEER ME!</button>
+               <button class="btn btn-primary btn-lg beerme" ng-click="postBeers()">BEER ME!</button>
              </div>
             </div>
             <div class="row">

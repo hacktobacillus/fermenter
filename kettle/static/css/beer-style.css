@@ -318,8 +318,37 @@ footer {
     border:1px solid #000000;
   }
 
+.beerme {
+    background-color: crimson;
+    border-color: black;
+}
+
+.beerme:hover { 
+    background-color: #e91640;
+    border-color: black;
+}
+.beerme:active { 
+    background-color: #bb1133;
+}
+
+.beercard .btn-success:active {
+    background-color: #006600;
+}
+
+.beercard .btn-failure:active {
+    background-color: #bb1133;
+}
+.beercard .btn-success:hover {
+    background-color: #009900;
+}
+
+.beercard .btn-failure:hover {
+    background-color: #e91640;
+}
+
 .beercard .btn-failure { 
-    background-color:red;
+    background-color:crimson;
+    color: white;
     opacity: 0.8;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;

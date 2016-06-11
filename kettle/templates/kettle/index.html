@@ -97,7 +97,8 @@
                   <!--div ng-repeat="item in model.beer_list">
                     <beer-card beer="item"></beer-card>
                   </div-->
-                  <p>Start by rating a couple of beers you like: <span class="black"><select ng-options="item.id as item.name for item in model.beer_list" ng-model="like_beers" id='likeSelect' size="5">
+                  <label>Search: <input ng-model="searchText" class="form-control"></label>
+                  <p>Start by rating a couple of beers you like: <span class="black"><select ng-options="item.id as item.name for item in model.beer_list | filter:searchText" ng-model="like_beers" id='likeSelect' size="5">
                   </select>
                   <p>and any beers you don't like: <span class="black"><select multiple id='dislikeSelect' size="20">
                   {% for beer in beers %}

@@ -1,6 +1,6 @@
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
-from formatData import BeerMLData
+from kettle.scripts.formatData import BeerMLData
 import numpy as np
 
 

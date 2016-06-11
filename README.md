@@ -12,7 +12,7 @@ git clone git@github.com:hacktobacillus/fermenter.git
 
 install virtualenv
 ```
-sudo pip install virtualenv
+pip3 install virtualenv
 ```
 
 setup the virtualenv

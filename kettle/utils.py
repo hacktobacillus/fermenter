@@ -1,6 +1,6 @@
 import requests
 import redis
-import json
+import simplejson as json
 from brewmaster.settings import AVERY_API_ROOT, REDIS_HOST
 
 
@@ -17,4 +17,4 @@ def get_beers(refresh_cache=False):
         beers = avery('beers')['beers']
         result = json.dumps([avery(beer['url']) for beer in beers])
         r.set('beers', result)
-    return json.loads(str(r.get('beers')))
+    return json.loads(r.get('beers'))

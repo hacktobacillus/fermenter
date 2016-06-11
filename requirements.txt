@@ -7,3 +7,4 @@ simplejson
 requests
 Django
 psycopg2
+redis

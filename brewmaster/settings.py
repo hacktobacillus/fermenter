@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'kettle'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -50,7 +51,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mashtun.urls'
+ROOT_URLCONF = 'brewmaster.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mashtun.wsgi.application'
+WSGI_APPLICATION = 'brewmaster.wsgi.application'
 
 
 # Database
@@ -123,3 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AVERY_API_ROOT = 'http://apis.mondorobot.com/'
+
+REDIS_HOST = 'localhost'

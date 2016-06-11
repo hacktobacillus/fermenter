@@ -118,7 +118,7 @@ body {
 
 }
 
-.bg__first .container {
+.bg__first .conta./kettle/templates/kettle/index.htmliner {
   height: 75.5vh;
   min-height: 440px;
 
@@ -298,19 +298,21 @@ footer {
 
 .beercard {
 
-  width:300px;
-  height:200px;
-  -webkit-border-radius: 75px;
-  -moz-border-radius: 75px;
-  border-radius: 75px;
-  border:2px solid #000000;
+  width:230px;
+  height:175px;
+  -webkit-border-radius: 55px;
+  -moz-border-radius: 55px;
+  border-radius: 55px;
+  border:1px solid #000000;
   background-color:#CCE1E3;
   position: relative;
   opacity: 0.8;
+  box-shadow: 5px 5px 5px #888888;
+  margin: 5px;
 }
 
 .beercard .btn-success { 
-    margin-right: 25px;
+    margin-right: 10px;
     background-color:green;
     opacity: 0.8;
     -webkit-border-radius: 15px;

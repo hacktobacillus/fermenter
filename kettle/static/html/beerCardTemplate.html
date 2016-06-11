@@ -1,7 +1,7 @@
-<div class='beercard' style="display: block;">
+<div class='beercard' style="position:relative;">
 <center><h5>{{beer.name}}</h5></center>
-<img style="margin-left: 105px;" ng-src="{{beer.label_image.desktop}}"></img>
-<span style="position: absolute;margin-top: 120px; margin-left: -110px">
+<img style="position: absolute;left:25%" ng-src="{{beer.label_image.desktop}}"></img>
+<span style="position: absolute;margin-top: 100px;left: 18%;">
 <button class="btn btn-success" ng-click="upVote(beer)">LIKE</button>
 <button class="btn btn-failure" ng-click="downVote(beer)">DISLIKE</button></span>
 </div>

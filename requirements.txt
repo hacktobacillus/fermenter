@@ -1,2 +1,6 @@
 Flask
 pycurl
+numpy
+scipy
+scikit-learn
+simplejson

@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .utils import get_beers
 from django.shortcuts import render
 from .scripts.trainClassifier import LRBeerClassifier
-import json
+import simplejson as json
 
 # Create your views here.
 
@@ -16,10 +16,12 @@ def beer_list(request):
     return render(request, 'kettle/beer_list.html', {'beers': beers})
 
 def crunch(request):
-    like_ids = []
-    dislike_ids = []
+    print(request.body)
+    received_json_data = json.loads(request.body)
+    like_ids = received_json_data['like_ids']
+    dislike_ids = received_json_data['dislike_ids']
     classifier = LRBeerClassifier()
     classifier.train(like_ids, dislike_ids)
-    results = sorted([(beer['id'], classifier.classify(beer['id'])) for beer in get_beers()], lambda x: x[1], reversed=True)
-    return json.dumps(results)
-
+    other_beers = [b for b in get_beers() if b['id'] not in like_ids + dislike_ids]
+    results = [(beer['id'], classifier.classify(beer['id'])) for beer in other_beers]
+    return JsonResponse({"result": sorted(results, key=lambda x: x[1], reverse=True)})

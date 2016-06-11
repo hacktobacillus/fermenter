@@ -51,7 +51,7 @@ class LRBeerClassifier(Classifier):
 
 
 
-if __name__ == '__main__':
+def test_run():
     import matplotlib.pyplot as plt
     from matplotlib.cm import jet
 

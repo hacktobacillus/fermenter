@@ -77,12 +77,8 @@ WSGI_APPLICATION = 'brewmaster.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hacktobacillus',
-        'USER': 'hacktobacillus',
-        'PASSWORD': 'averytest',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 

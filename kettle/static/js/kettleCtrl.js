@@ -61,7 +61,7 @@ angular.module("kettleApp")
 
 
     function postBeers() {
-        $http.post('/kettle/crunch',{like_ids:$scope.like_beers,dislike_ids:$scope.dont_beers}).then(
+        $http.post('/kettle/crunch',{like_ids:$scope.like_beers,dislike_ids:$scope.dislike_beers}).then(
         function (data) { 
             console.log(data);
             alert('<img src="http://http://media.giphy.com/media/rnR8L2AtvBpD2/giphy-tumblr.gif"></img>');

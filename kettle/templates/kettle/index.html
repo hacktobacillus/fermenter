@@ -41,10 +41,6 @@
 {% endfor %}
 -->
 
-<div ng-repeat="beer in model.beer_list">
-  <beer-card beer="beer" up-vote="upVoteBeer(beer)" down-vote="downVoteBeer(beer)"></beer-card>
-</div>
-
 
 <div id="images"></div>
  
@@ -97,212 +93,51 @@
               <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="left-image wow animated fadeInLeft">
                   <img src="{% static "images/Beer-Header.jpg" %}" alt="" class="img-responsive">
-                </div>
-              </div>
+                </div> <!-- wowimage -->
+              </div> <!-- col-md4 -->
               <div class="col-md-8 col-sm-8 col-xs-12">              
                 <div class="right-caption wow animated fadeInRight">
                   <h4>Need a beer? Let Avery help</h4>
-                  <button ng-click="postBeers()">click</button>
                   <h2><span class="yellow">Beer</span> Options</h2>
                   <!--div ng-repeat="item in model.beer_list">
                     <beer-card beer="item"></beer-card>
                   </div-->
-                  <label>Search: <input ng-model="searchText" class="form-control"></label>
-                  <p>Start by rating a couple of beers you like: <span class="black"><select ng-options="item.id as item.name for item in model.beer_list | filter:searchText" ng-model="like_beers" id='likeSelect' size="5">
-                  </select>
-                  <p>and any beers you don't like: <span class="black"><select multiple id='dislikeSelect' size="20">
-                  {% for beer in beers %}
-                      <option value="{{ beer.id }}">{{ beer.name }}</option>
-                    {% endfor %}
-                  </select>
-
-                  <!--
-                  <p>Start by rating a couple of beers you like: <span class="black"><select multiple id='likeSelect' size="5">
-                    {% for beer in beers %}
-                      <option value="{{ beer.id }}">{{ beer.name }}</option>
-                    {% endfor %}
-                  </select>
-                  <p>and any beers you don't like: <span class="black"><select multiple id='dislikeSelect' size="20">
-                  {% for beer in beers %}
-                      <option value="{{ beer.id }}">{{ beer.name }}</option>
-                    {% endfor %}
-                  </select>
-                    -->
-                  <!--</span><span class="lightgreen">mo</span>.com website. Photos used in this template are from <a rel="nofollow" href="http://unsplash.com"><span class="yellow">Unsplash</span></a>. Maecenas fauci ice bus et felis at scelerisque.</p>
-                  <div class="stroked-button"><a href="#" class="scroll-link" data-id="second-section">Read More</a></div><br>-->
-                </div>
-              </div>
-            </div>            
-          </div>          
+               </div> <!-- caption -->
+             </div> <!-- col-md-8 -->
+             <div class="form-group">
+               <label>Search:</label>
+               <input ng-model="searchText" class="form-control">
+             </div>
+            </div> <!-- row --> 
+          </div> <!-- flexbox -->        
+            <div class="row">
+             <div class="col-md-10" style="text-align:center;padding: 25px;">
+               <button class="btn btn-primary" ng-click="postBeers()">BEER ME!!!!11one</button>
+             </div>
+            </div>
+            <div class="row">
+             <div class="col-md-12">
+               <div class="row" ng-repeat="beer in model.beer_list | filter:searchText" ng-if="($index%4)==0">
+                 <div class="col-md-3">
+                  <beer-card beer="model.beer_list[$index]" up-vote="upVoteBeer(model.beer_list[$index])" down-vote="downVoteBeer(model.beer_list[$index])"></beer-card> 
+                 </div>
+                 <div class="col-md-3">
+                  <beer-card beer="model.beer_list[$index+1]" up-vote="upVoteBeer(model.beer_list[$index+1])" down-vote="downVoteBeer(model.beer_list[$index+1])"></beer-card> 
+                 </div>
+                 <div class="col-md-3">
+                  <beer-card beer="model.beer_list[$index+2]" up-vote="upVoteBeer(model.beer_list[$index+2])" down-vote="downVoteBeer(model.beer_list[$index+2])"></beer-card> 
+                 </div>
+                 <div class="col-md-3">
+                  <beer-card beer="model.beer_list[$index+3]" up-vote="upVoteBeer(model.beer_list[$index+3])" down-vote="downVoteBeer(model.beer_list[$index+3])"></beer-card> 
+                 </div>
+               </div>
+             </div> <!-- col-md10 -->
+           </div> <!-- row -- >
         </div>
         <div class="arrow text-center">
           <a href="#" class="scroll-link btn btn-dark" data-id="second-section"><i class="fa fa-angle-down"></i></a>
         </div>
       </div>
-
-
-      <!--<div id="second-section"> 
-        <div class="bg__second"> 
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 fadeInUp">
-            <div class="sevice-items">
-              <div class="col-md-3 col-sm-6 wow bounceInUp">
-                <div class="single-item">
-                  <i class="fa fa-camera"></i>
-                  <h2>Options</h2>
-                  <p>In egestas arcu quis diam mattis dignissim. Nam vestibulum sed est acil feugiat tempor.</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 wow bounceInUp">
-                <div class="single-item">
-                  <i class="fa fa-refresh"></i>
-                  <h2>Icons</h2>
-                  <p>Change icons by <a rel="nofollow" href="http://fontawesome.info/font-awesome-icon-world-map/">Font Awesome</a> (version 4). Example: &lt;i class=&quot;fa fa-refresh&quot;&gt;&lt;/i&gt;</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 wow bounceInUp">
-                <div class="single-item">
-                  <i class="fa fa-link"></i>
-                  <h2>Responsive</h2>
-                  <p>In Avery we trust</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 wow bounceInUp">
-                <div class="single-item">
-                    <i class="fa fa-download"></i>
-                    <h2>Avery</h2>
-                    <p>In Avery we trust</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="service-arrow">
-              <a href="#" class="scroll-link btn btn-dark" data-id="third-section"><i class="fa fa-angle-down"></i></a>
-            </div>
-          </div>
-        </div>        
-      </div>
-
-
-      <div class="bg__third">
-        <div id="third-section">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4 col-sm-6 col-xs-10 wow animated fadeInLeft">
-                <div class="left-text">
-                  <h2>.03 Section Three Title</h2>
-                  <div class="line"></div>
-                  <p>Please tell your friends about <span class="blue">AVERRY</span><span class="green">mo</span>.com website <br><br>Avery again.</p>
-                  <div class="button">
-                    <a href="#">Read More About Avery</a>
-                  </div>                  
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 templatemo-position-relative">
-                <div class="fourth-arrow">
-                  <a href="#" class="scroll-link btn btn-dark" data-id="fourth-section"><i class="fa fa-angle-down"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="bg__fourth">
-        <div id="fourth-section">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4 col-md-offset-8 col-sm-6 col-xs-10 col-xs-offset-1 wow animated fadeInLeft">
-                <div class="left-text">
-                  <h2>.04 Section Four Title</h2>
-                  <div class="line"></div>
-                  <p>Donec suscipit hendrerit euismod. Ut at nisl sem. Praesent ac efficitur mi. Sed fermentum iaculis accumsan. Mauris rutrum dignissim eros id finibus sed turpis in diam mollis lobortis. <br><br>Phasellus tincidunt leo ante, quis convallis lectus pretium vel. Ut blandit, est eget feugiat laoreet, magna nisi volutpat ligula, commodo efficitur metus magna vel sapien.</p>                  
-                  <div class="button">
-                    <a href="#">Read More</a>
-                  </div>                  
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="fourth-arrow">
-                <a href="#" class="scroll-link btn btn-dark" data-id="fifth-section"><i class="fa fa-angle-down"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div id="fifth-section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-md-offset-3 col-xs-12 wow animated fadeInDown">
-              <h1>Fill This Application Now!</h1>
-              <div class="col-md-12">
-                <p>Nulla aliquam felis mi, volutpat convallis lorem eleifend id. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-              </div>
-            </div>
-          </div>
-          <form action="#" method="get">
-          <div class="row">
-            
-            <div class="col-md-8 col-md-offset-2 wow animated fadeInUp">
-            
-              <div class="submit-form">
-                
-                <div class="col-md-3">
-                  <input name="name" type="text" id="name" placeholder="Your name..."/>
-                </div>
-                
-                <div class="col-md-3">
-                  <input name="email" type="text" id="email" placeholder="Your email..."/>
-                </div>
-                
-                <div class="col-md-3">
-                  <select name="gender" id="gender">
-                    <option value="null">Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-                </div>
-                
-                <div class="col-md-3">
-                  <select name="age" id="age">
-                    <option value="null">Age</option>
-                    <option value="18-24">18 - 24</option>
-                    <option value="25-30">25 - 30</option>
-                    <option value="31-40">31 - 40</option>
-                    <option value="41-60">41 - 60</option>
-                </select>
-                </div>
-                
-              </div>
-              
-            </div>
-            
-            </div>
-            
-            <div class="row">
-            
-                <div class="col-md-4 col-md-offset-5 wow animated fadeInUp">
-                    <input type="submit" value="Submit" class="templatemo-submit" />
-                </div>
-             
-            </div>
-            
-          </form>
-        </div>
-      </div> -->
-
 
       <footer>
         <div class="container">

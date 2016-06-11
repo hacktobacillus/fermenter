@@ -7,13 +7,13 @@ angular.module("kettleApp")
     }
 
     return {
+        restrict: 'E',
         link: link,
         templateUrl: '/static/html/beerCardTemplate.html',
         scope: {
-            restrict: 'E',
             beer: '=',
             upVote: '&',
-            downVote: '&',
+            downVote: '&'
         }
     }
 });

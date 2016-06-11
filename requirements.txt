@@ -1,5 +1,9 @@
 Flask
 pycurl
+numpy
+scipy
+scikit-learn
+simplejson
 requests
 Django
 psycopg2

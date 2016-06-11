@@ -115,6 +115,7 @@ body {
   background-image: url(
     ../images/first-bg.jpg
   );
+  background-attachment: fixed;
 
 }
 

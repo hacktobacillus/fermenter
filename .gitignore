@@ -90,3 +90,6 @@ ENV/
 
 # Python virtualenv
 venv/
+
+# Ignore the persistence dir
+data/

@@ -1,6 +1,6 @@
-<div style="display: block;">
-<h6>{{beer.name}}</h6>
+<div class='beercard' style="display: block;">
+<center><h5>{{beer.name}}</h5></center>
 <img ng-src="{{beer.label_image.desktop}}"></img>
-<button class="btn btn-success" ng-click="upVote()"></button>
-<button class="btn btn-failure" ng-click="downVote()"></button>
+<button class="btn btn-success" ng-click="upVote()">LIKE</button>
+<button class="btn btn-failure" ng-click="downVote()">DISLIKE</button>
 </div>

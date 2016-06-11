@@ -1,8 +1,17 @@
 import simplejson as json, os
+from sklearn.decomposition import PCA
+from kettle.utils import get_beers
 import numpy as np
 
 class BeerMLData(list):
 
+    def __init__(self):
+        self.proj = None
+        self.arr = None
+        self.beer_mapping = None
+        try:
+            self.load()
+        except: pass
     important_keys = [
         ('hop_varieties',list),
         ('dry_hop_varieties',list),
@@ -16,7 +25,8 @@ class BeerMLData(list):
     ]
 
     def from_model(self):
-        pass
+        self.extend(get_beers(False))
+
     def from_file(self,fpath):
         with open(fpath,'r') as fp:
             self.extend(json.load(fp))
@@ -26,10 +36,20 @@ class BeerMLData(list):
 
     def get_mapping_asarray(self):
         num_samples = len(self.beer_mapping)
-        arr = np.zeros((num_samples,self.fs_dim),dtype=float)
+        self.arr = np.zeros((num_samples,self.fs_dim),dtype=float)
         for i,(k,v) in enumerate(self.beer_mapping.items()):
-            arr[i] = v
-        return arr
+            self.arr[i] = v
+        self.compute_pca()
+        return self.arr
+
+    def compute_pca(self):
+        self.proj = PCA(n_components=2)
+        self.proj.fit(self.arr)
+
+    def project(self):
+        return self.proj.transform(self.arr)
+
+        
 
     def create_beer_mapping(self): 
         data = {}
@@ -41,8 +61,7 @@ class BeerMLData(list):
         self.fscales = {}
 
         # Figure out feature space dimensionality
-        for x in self:
-            beer = x['beer']
+        for beer in self:
             for key,dtype in self.important_keys:
                 fsk = self.feature_space_keys[key]
                 dat = dtype(beer[key])
@@ -72,12 +91,20 @@ class BeerMLData(list):
        
 
         self.beer_mapping = {}
-        for x in self:
-            beer = x['beer']
+        for beer in self:
+            #beer = x['beer']
             beer_id = beer['id']
             self.beer_mapping[beer_id] = self.map_beer(beer)
 
-    def map_beer(self,beer):
+    def get_beer_by_id(self,beer_id):
+        beers = [beer for beer in self if beer['id'] == beer_id]
+        return beers[0]
+
+    def map_beer(self,x):
+        if isinstance(x,str):
+            beer = self.get_beer_by_id(x)
+        else:
+            beer = x
         record = np.zeros(self.fs_dim)
         idx = 0
         for key,dtype in self.important_keys:
@@ -109,15 +136,26 @@ if __name__ == "__main__":
     path = os.path.expanduser('~/Downloads/beer_data.json')
 
     data = BeerMLData()
-    data.from_file(path)
+    data.from_model()
+    #data.from_file(path)
     data.create_beer_mapping()
 
     X = data.get_mapping_asarray()
+    Y = data.project()
+
+
     import matplotlib
     #matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     plt.figure()
     plt.imshow(X)
-    plt.savefig('test.png')
+    plt.figure()
+    plt.gca().set_axis_bgcolor('k')
+    plt.plot(Y[:,0],Y[:,1],'ro')
+    mapping = data.beer_mapping
+    for i,(k,v) in enumerate(mapping.items()):
+        plt.text(Y[i,0],Y[i,1],k,color='w')
+
+    plt.show()
     #print(data.fields())
     #print(data[0])

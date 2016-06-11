@@ -93,6 +93,15 @@
                   <h4>Need a beer? Let Avery help</h4>
                   <button ng-click="postBeers()">click</button>
                   <h2><span class="yellow">Beer</span> Options</h2>
+                  <p>Start by rating a couple of beers you like: <span class="black"><select ng-options="item.id as item.name for item in model.beer_list" ng-model="like_beers" id='likeSelect' size="5">
+                  </select>
+                  <p>and any beers you don't like: <span class="black"><select multiple id='dislikeSelect' size="20">
+                  {% for beer in beers %}
+                      <option value="{{ beer.id }}">{{ beer.name }}</option>
+                    {% endfor %}
+                  </select>
+
+                  <!--
                   <p>Start by rating a couple of beers you like: <span class="black"><select multiple id='likeSelect' size="5">
                     {% for beer in beers %}
                       <option value="{{ beer.id }}">{{ beer.name }}</option>
@@ -103,7 +112,7 @@
                       <option value="{{ beer.id }}">{{ beer.name }}</option>
                     {% endfor %}
                   </select>
-
+                    -->
                   <!--</span><span class="lightgreen">mo</span>.com website. Photos used in this template are from <a rel="nofollow" href="http://unsplash.com"><span class="yellow">Unsplash</span></a>. Maecenas fauci ice bus et felis at scelerisque.</p>
                   <div class="stroked-button"><a href="#" class="scroll-link" data-id="second-section">Read More</a></div><br>-->
                 </div>

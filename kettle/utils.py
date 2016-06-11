@@ -17,4 +17,4 @@ def get_beers(refresh_cache=False):
         beers = avery('beers')['beers']
         result = json.dumps([avery(beer['url']) for beer in beers])
         r.set('beers', result)
-    return json.loads(r.get('beers'))
+    return json.loads(str(r.get('beers')))

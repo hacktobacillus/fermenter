@@ -73,7 +73,7 @@ angular.module("kettleApp")
             $('#myModal').modal('show');
         },
         function () { 
-            alert('failed');
+            alert('Please like one beer and dislike one beer to continue...');
         });
     }
 });

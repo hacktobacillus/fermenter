@@ -3,7 +3,6 @@ angular.module("kettleApp")
 .directive("beerCard",function() {
 
     function link(scope,element,attrs) {
-        
     }
 
     return {

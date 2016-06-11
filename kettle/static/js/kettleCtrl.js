@@ -31,7 +31,7 @@ angular.module("kettleApp")
         var beer_exists = false;
         for (var i in $scope.like_beers) {
             var bid  = $scope.like_beers[i];
-            if (beer.id = bid) {
+            if (beer.id == bid) {
                 beer_exists = true;
                 break
             }
@@ -44,15 +44,18 @@ angular.module("kettleApp")
         for (var i in $scope.dislike_beers) {
             var bid  = $scope.dislike_beers[i];
             // remove it if present
-            if (beer.id = bid) {
+            if (beer.id == bid) {
                 $scope.dislike_beers.splice(i,1);
                 beer.voted_on = false;
                 return;
+            }
         }
         beer.voted_on = true;
+        console.log([$scope.like_beers,$scope.dislike_beers]);
     }
 
     function downVoteBeer(beer) {
+        console.log(beer);
         // return if this beer has been voted on.
         if (beer.voted_on) {
             return;
@@ -60,7 +63,7 @@ angular.module("kettleApp")
         var beer_exists = false;
         for (var i in $scope.dislike_beers) {
             var bid  = $scope.dislike_beers[i];
-            if (beer.id = bid) {
+            if (beer.id == bid) {
                 beer_exists = true;
                 break
             }
@@ -77,9 +80,11 @@ angular.module("kettleApp")
                 $scope.like_beers.splice(i,1);
                 beer.voted_on = false;
                 return;
+            }
         }
         beer.voted_on = true;
- }
+        console.log([$scope.like_beers,$scope.dislike_beers]);
+     }
 
 
     function postBeers() {

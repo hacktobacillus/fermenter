@@ -93,3 +93,6 @@ venv/
 
 # Ignore the persistence dir
 data/
+
+# Ignore the sqlite db
+mydatabase

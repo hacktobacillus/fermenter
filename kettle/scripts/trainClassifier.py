@@ -1,5 +1,6 @@
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
 from kettle.scripts.formatData import BeerMLData
 import numpy as np
 
@@ -34,6 +35,13 @@ class NBBeerClassifier(Classifier):
         Classifier.__init__(self)
         self.classifier = GaussianNB()
 
+class SVCBeerClassifier(Classifier):
+
+    def __init__(self):
+        Classifier.__init__(self)
+        self.classifier = SVC(kernel='linear',probability=True)
+
+
 class LRBeerClassifier(Classifier):
 
     def __init__(self,regularization=100.0):
@@ -52,8 +60,9 @@ if __name__ == '__main__':
 
     
 
-    #classifier = LRBeerClassifier()
-    classifier = NBBeerClassifier()
+    classifier = LRBeerClassifier()
+    #classifier = NBBeerClassifier()
+    #classifier = SVCBeerClassifier()
     classifier.train(beers_i_like,beers_i_dont)
 
     
@@ -62,10 +71,11 @@ if __name__ == '__main__':
     plt.figure()
     plt.gca().set_axis_bgcolor('k')
 
+    vals = []
     for i,beer in enumerate(classifier.beer_data):
         k = beer['name']
         val = classifier.classify(beer['id'])
-        print (k,val)
+        vals.append( (val,k))
 
         color = jet(int(255*val))
         #'''
@@ -76,5 +86,8 @@ if __name__ == '__main__':
             plt.text(Y[i,0],Y[i,1],k,color=color)
             plt.plot([Y[i,0]],[Y[i,1]],'ro',mec=color,mfc=color)
         #'''
+    vals.sort()
+    for val in vals:
+        print(val)
     plt.show()
 

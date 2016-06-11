@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load djng_tags %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,7 +21,10 @@
       <script src="{% static "js/vendor/jquery-1.11.1.min.js" %}"></script>
     <script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
     <script src="{% static "js/vendor/wow-animate.js" %}"></script>
+    <script src="{% static "js/angular.min.js" %}"></script>
     <script src="{% static "js/main.js" %}"></script>
+    <script src="{% static "js/kettleApp.js" %}"></script>
+    <script src="{% static "js/kettleCtrl.js" %}"></script>
     <script>
         // wow
         new WOW ({
@@ -29,7 +33,7 @@
         }).init();
     </script>
 </head>
-<body>
+<body ng-app="kettleApp" ng-controller="kettleCtrl">
  
 <div id="images"></div>
  
@@ -87,8 +91,9 @@
               <div class="col-md-8 col-sm-8 col-xs-12">              
                 <div class="right-caption wow animated fadeInRight">
                   <h4>Need a beer? Let Avery help</h4>
+                  <button ng-click="postBeers()">click</button>
                   <h2><span class="yellow">Beer</span> Options</h2>
-                  <p>Start by rating a couple of beers you like: <span class="black"><select multiple id='likeSelect' size="20">
+                  <p>Start by rating a couple of beers you like: <span class="black"><select multiple id='likeSelect' size="5">
                     {% for beer in beers %}
                       <option value="{{ beer.id }}">{{ beer.name }}</option>
                     {% endfor %}

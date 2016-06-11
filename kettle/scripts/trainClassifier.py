@@ -55,13 +55,15 @@ def test_run():
     import matplotlib.pyplot as plt
     from matplotlib.cm import jet
 
-    beers_i_like = ['samael-s','rumpkin','the-beast','out-of-bounds-stout','baltic-porter']
-    beers_i_dont = ['joe-s-pils','raja','ipa','summer-s-day-ipa','dry-hopped-ipa','dugana']
+    #beers_i_like = ['samael-s','rumpkin','the-beast','out-of-bounds-stout','baltic-porter']
+    #beers_i_dont = ['joe-s-pils','raja','ipa','summer-s-day-ipa','dry-hopped-ipa','dugana']
+    beers_i_like = ['samael-s']
+    beers_i_dont = ['ipa']
 
     
 
     classifier = LRBeerClassifier(100.)
-    classifier = NBBeerClassifier()
+    #classifier = NBBeerClassifier()
     #classifier = SVCBeerClassifier()
     classifier.train(beers_i_like,beers_i_dont)
 

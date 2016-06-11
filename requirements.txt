@@ -6,3 +6,4 @@ scikit-learn
 simplejson
 requests
 Django
+django-angular

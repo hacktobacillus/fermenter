@@ -125,6 +125,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+
+]
+
 AVERY_API_ROOT = 'http://apis.mondorobot.com/'
 
 REDIS_HOST = 'localhost'

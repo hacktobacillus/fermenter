@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,15 +12,15 @@
   </style>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">        
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css"> <!-- Font Awesome -->
-  <link rel="stylesheet" href="css/wow-animate.css"> <!-- Wow Animate -->
-  <link rel="stylesheet" href="css/beer-style.css">
-  <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-      <script src="js/vendor/jquery-1.11.1.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/vendor/wow-animate.js"></script>
-    <script src="js/main.js"></script>
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}"> <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static "css/wow-animate.css" %}"> <!-- Wow Animate -->
+  <link rel="stylesheet" href="{% static "css/beer-style.css" %}">
+  <script src="{% static "js/vendor/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
+      <script src="{% static "js/vendor/jquery-1.11.1.min.js" %}"></script>
+    <script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/vendor/wow-animate.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
     <script>
         // wow
         new WOW ({
@@ -32,34 +33,7 @@
  
 <div id="images"></div>
  
-<script>
-(function() {
-  var beerAPI = "http://apis.mondorobot.com/beers";
-  $.getJSON( beerAPI, {
-    tags: "",
-    tagmode: "any",
-    format: "json"
-  })
-    .done(function( data ) {
 
-      var mySelect = $('#mySelect');
-      for(var i = 0; i < data.beers.length; i++) {
-        var name = data.beers[i]['name'];
-        mySelect.append(
-          $('<option></option>').val(name).html(name)
-        );
-      }
-
-
-      //$.each( data.items, function( i, item ) {
-      //  $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-      //  if ( i === 3 ) {
-      //    return false;
-      //  }
-      //});
-    });
-})();
-</script>
 
 
 
@@ -109,14 +83,18 @@
             <div class="row">
               <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="left-image wow animated fadeInLeft">
-                  <img src="images/Beer-Header.jpg" alt="" class="img-responsive">
+                  <img src="{% static "images/Beer-Header.jpg" %}" alt="" class="img-responsive">
                 </div>
               </div>
               <div class="col-md-8 col-sm-8 col-xs-12">              
                 <div class="right-caption wow animated fadeInRight">
                   <h4>Need a beer? Let Avery help</h4>
                   <h2><span class="yellow">Beer</span> Options</h2>
-                  <p>Start by rating a couple of beers you like: <span class="black"><select id='mySelect'></select>
+                  <p>Start by rating a couple of beers you like: <span class="black"><select id='mySelect'>
+                    {% for beer in beers %}
+                      <option value="{{ beer.name }}">{{ beer.name  }}</option>
+                    {% endfor %}
+                  </select>
 
                   <!--</span><span class="lightgreen">mo</span>.com website. Photos used in this template are from <a rel="nofollow" href="http://unsplash.com"><span class="yellow">Unsplash</span></a>. Maecenas fauci ice bus et felis at scelerisque.</p>
                   <div class="stroked-button"><a href="#" class="scroll-link" data-id="second-section">Read More</a></div><br>-->

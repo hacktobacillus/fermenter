@@ -1,0 +1,6 @@
+
+<ul>
+    {% for beer in beers %}
+        {{ beer.name }}: <img src="{{ beer.label_image.original }}"><br>
+    {% endfor %}
+</ul>

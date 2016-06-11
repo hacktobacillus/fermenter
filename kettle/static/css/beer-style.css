@@ -345,6 +345,9 @@ footer {
 .beerme:active { 
     background-color: #bb1133;
 }
+.beerme:focus { 
+    background-color: #bb1133;
+}
 
 .beercard .btn-success:active {
     background-color: #006600;

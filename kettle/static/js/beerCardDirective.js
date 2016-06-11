@@ -10,6 +10,7 @@ angular.module("kettleApp")
         link: link,
         templateUrl: '/static/html/beerCardTemplate.html',
         scope: {
+            restrict: 'E',
             beer: '=',
             upVote: '&',
             downVote: '&',

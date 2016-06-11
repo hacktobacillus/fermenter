@@ -296,3 +296,25 @@ footer {
   text-decoration: none!important;
 }
 
+.beercard {
+
+  width:300px;
+  height:200px;
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+  border-radius: 75px;
+  border:2px solid #000000;
+  background-color:#CCE1E3;
+  position: relative;
+}
+
+.beercard .btn-success { 
+    position: absolute;
+    bottom: 0;
+    background-color:#CCE1E3;
+  }
+
+.beercard .btn-failure { 
+    background-color:red;
+  }
+

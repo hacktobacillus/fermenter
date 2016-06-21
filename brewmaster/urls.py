@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from kettle.views import index
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^kettle/', include('kettle.urls')),
+    url(r'^$', index)
 ]
